@@ -7,8 +7,8 @@ const messageRoutes = require("./Routes/message.routes");
 const userRoutes=require("./Routes/user.routes")
 
 const conectToMongoDb = require("./Db/db");
+const { app, server } = require("./Socket/socket");
 
-const app = express();
 const port = process.env.PORT || 5008;
 
 dotenv.config();
@@ -25,7 +25,7 @@ app.use("/api/users",userRoutes)
 //  res.send("Server is ready")
 // })
 
-app.listen(port, () => {
+server.listen(port, () => {
   conectToMongoDb();
   console.log(`Server is running on port ${port}`);
 });
