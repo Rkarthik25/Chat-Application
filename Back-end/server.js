@@ -35,9 +35,12 @@ app.use("/api/users",userRoutes)
 // })
 
 
-const indexPath = 'C:/Users/Karthi/Desktop/Chat-Application/Chat-Application/Front-end/dist';
 
-const staticPath = path.join(indexPath);
+// __dirname is 'C:\Users\Karthi\Desktop\Chat-Application\Chat-Application\Back-end'
+const newDirname = path.dirname(__dirname); // This will return 'C:\Users\Karthi\Desktop\Chat-Application\Chat-Application'
+
+
+const staticPath = path.join(newDirname, 'Front-end', 'dist');
 app.use(express.static(staticPath));
 
 app.get('*', (req, res) => {
@@ -52,4 +55,5 @@ app.get('*', (req, res) => {
 server.listen(port, () => {
   conectToMongoDb();
   console.log(`Server is running on port ${port}`);
+  console.log(newDirname)
 });
