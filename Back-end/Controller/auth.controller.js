@@ -4,7 +4,7 @@ const generateTokenandsetCookie = require("../utils/generateToken");
 const signup = async (req, res) => {
   try {
     const { fullName, userName, password, confirmPassword, gender } = req.body;
-
+    
     if (password !== confirmPassword) {
       return res
         .status(400)
